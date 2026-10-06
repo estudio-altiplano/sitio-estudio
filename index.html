@@ -137,7 +137,7 @@
   .burger svg{width:20px; height:20px; stroke:var(--ink);}
 
   /* ---------- hero ---------- */
-  .hero{padding:88px 0 190px; position:relative; overflow:hidden;}
+  .hero{padding:88px 0 104px; position:relative; overflow:hidden; border-bottom:1px solid var(--line);}
   .hero > .wrap{position:relative; z-index:2;}
   .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
   .hero-seal{
@@ -146,16 +146,6 @@
     -webkit-mask:url("assets/img/logo-sello.webp") center/contain no-repeat;
             mask:url("assets/img/logo-sello.webp") center/contain no-repeat;
   }
-  /* Horizonte a línea fina, como en el sello. */
-  .sierra{
-    position:absolute; left:0; right:0; bottom:0; width:100%; height:150px;
-    pointer-events:none; z-index:1;
-  }
-  .sierra path{fill:none; stroke:var(--ink); stroke-linecap:round; stroke-linejoin:round;}
-  .sierra .far{stroke-width:1; opacity:.28;}
-  .sierra .near{stroke-width:1.2; opacity:.45;}
-  .sierra .palma{stroke-width:1.2; opacity:.55;}
-  .sierra .sun{stroke:var(--terra); stroke-width:1.4; opacity:.9;}
   .badge{
     display:inline-flex; align-items:center; gap:9px;
     padding:7px 16px; border:1px solid var(--line-2); border-radius:100px;
@@ -421,9 +411,8 @@
     .burger{display:block; order:3;}
     .nav-actions{margin-left:auto;}
     .nav-actions .btn{display:none;}
-    .hero{padding:56px 0 130px;}
+    .hero{padding:56px 0 72px;}
     .hero-seal{max-width:150px;}
-    .sierra{height:100px;}
     .trust{grid-template-columns:repeat(2,auto); gap:24px 36px;}
     .cta-box{padding:60px 22px;}
   }
@@ -514,17 +503,6 @@
     <div class="hero-seal" role="img" aria-label="Sello de Estudio Altiplano: una yuca frente a la sierra del altiplano potosino"></div>
   </div>
 
-  <!-- Horizonte del altiplano a línea fina, como el sello. -->
-  <svg class="sierra" viewBox="0 0 1440 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <path class="far" d="M0 92 L140 70 L250 84 L380 52 L500 78 L640 44 L760 74 L880 50 L1020 82 L1150 58 L1280 86 L1440 66"/>
-    <path class="sun" d="M1086 68a34 34 0 0 1 68 0"/>
-    <path class="near" d="M0 128 L150 112 L290 126 L430 102 L560 120 L700 98 L840 118 L980 104 L1120 124 L1270 108 L1440 122"/>
-    <g class="palma">
-      <path d="M318 122 319 84 321 122M319 82 307 86M319 82 309 78M319 82 312 72M319 82 318 68M319 82 325 71M319 82 329 77M319 82 332 86"/>
-      <path d="M1222 112 1223 82 1225 112M1223 80 1213 83M1223 80 1215 75M1223 80 1219 70M1223 80 1228 70M1223 80 1232 75M1223 80 1234 83"/>
-      <path d="M902 116 903 100 904 116M903 99 896 101M903 99 898 95M903 99 903 92M903 99 908 95M903 99 910 101"/>
-    </g>
-  </svg>
 </section>
 
 <!-- ============ SERVICES ============ -->
