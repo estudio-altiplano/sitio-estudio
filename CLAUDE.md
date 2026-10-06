@@ -50,6 +50,9 @@ Pricing is fixed per project. Prices are **never shown on the public site** (del
   - Charcoal `#1C1A18`
   - Sand, stone and moss as accents
 - **Logo:** a line-art seal: a yucca in front of the altiplano sierra, with "ESTUDIO / ALTIPLANO" around it (`assets/img/logo-sello.webp`, a transparent image used as a CSS mask so it can take any color). Small sizes use a simplified inline SVG mark (`.logo-mark`) next to a tracked uppercase wordmark. Fine line art and generous whitespace are part of the look.
+- **Terracota** is the single accent, decorative only: the sun in the illustrations and hero horizon, the "Más elegido" tag, the availability dot. Use `--terra` (#A6643C) for decoration; any text or text-on-terracota uses `--terra-ink` (#8E5230), because #A6643C fails contrast for small text. Never for buttons or large backgrounds.
+- **Sage** `#E8E7DA` is a third background tone, used only for the Trabajo section.
+- **Illustrations:** hand-drawn line art in `assets/img/arte-*.webp` (transparent), placed so they "rest" on a line of the layout: the agave on the services grid, the sierras on section bottoms, the sun on the contact box. Decorative only (`alt=""`); section titles stay as real, translatable HTML text, never text baked into images.
 - **Orange** is **not** a brand color. The old orange palma logo and the dark theme are retired.
 - **Fonts:** Manrope (headings), Inter (body).
 - **Full briefs:** `estudio-altiplano-brand-brief.md` and `ui-ux-design-brief.md`. Those take precedence over this summary.

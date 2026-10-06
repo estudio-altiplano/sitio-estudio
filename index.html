@@ -37,6 +37,9 @@
     --moss:#56634A;        /* musgo */
     --sand:#C8B597;        /* arena */
     --stone:#8C857A;       /* cantera */
+    --sage:#E8E7DA;        /* salvia (fondo de Trabajo) */
+    --terra:#A6643C;       /* terracota: solo acento decorativo (el sol) */
+    --terra-ink:#8E5230;   /* terracota oscuro: único tono apto para texto o fondos con texto */
     --on-green:#F5F0E8;
     --font-display:'Manrope', -apple-system, 'Segoe UI', sans-serif;
     --radius:10px;
@@ -152,13 +155,13 @@
   .sierra .far{stroke-width:1; opacity:.28;}
   .sierra .near{stroke-width:1.2; opacity:.45;}
   .sierra .palma{stroke-width:1.2; opacity:.55;}
-  .sierra .sun{stroke-width:1; opacity:.35;}
+  .sierra .sun{stroke:var(--terra); stroke-width:1.4; opacity:.9;}
   .badge{
     display:inline-flex; align-items:center; gap:9px;
     padding:7px 16px; border:1px solid var(--line-2); border-radius:100px;
     font-size:0.8rem; color:var(--muted); margin-bottom:30px; background:var(--card);
   }
-  .badge .dot{width:7px; height:7px; border-radius:50%; background:#4E7A52; flex:none;}
+  .badge .dot{width:7px; height:7px; border-radius:50%; background:var(--terra); flex:none;}
   .hero h1{font-size:clamp(2.4rem,6vw,4.3rem); margin-bottom:26px; font-weight:700; letter-spacing:-0.035em;}
   .hero h1 .hl{display:block; color:var(--green);}
   .hero .lede{
@@ -172,6 +175,17 @@
   }
   .trust strong{display:block; font-family:var(--font-display); font-size:1.4rem; color:var(--ink); font-weight:800; letter-spacing:-0.02em;}
   .trust span{font-size:0.8rem; color:var(--muted);}
+
+  /* ---------- ilustraciones de sección ----------
+     Línea a mano (agave y sierras) que se "apoya" en una línea del diseño:
+     la retícula de servicios, el borde inferior de la sección o la caja de contacto. */
+  .art{display:block; height:auto; pointer-events:none; user-select:none;}
+  .section-top{display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;}
+  .art-agave{width:240px; margin-bottom:-2px; justify-self:end;}
+  .art-horizon{width:min(640px,100%); margin:56px 0 -1px auto;}
+  .art-horizon.wide{width:min(980px,100%); margin-top:72px;}
+  .art-contact{width:min(420px,70%); margin:0 28px -6px auto; position:relative; z-index:1;}
+  .cap-more{display:none;}
 
   /* ---------- capabilities ---------- */
   .cap-grid{
@@ -207,7 +221,7 @@
   .pkg.featured .btn-primary:hover{background:#fff;}
   .pkg-tag{
     position:absolute; top:-12px; left:30px;
-    background:var(--sand); color:var(--ink);
+    background:var(--terra-ink); color:var(--on-green);
     font-family:var(--font-display);
     font-size:0.66rem; font-weight:800; letter-spacing:0.18em; text-transform:uppercase;
     padding:5px 13px; border-radius:100px;
@@ -236,7 +250,7 @@
   .step p{font-size:0.89rem; color:var(--muted);}
 
   /* ---------- work ---------- */
-  .work{background:var(--paper-2); border-block:1px solid var(--line);}
+  .work{background:var(--sage); border-block:1px solid var(--line); padding-bottom:0;}
   .work-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px;}
   .case{
     background:var(--card); border:1px solid var(--line);
@@ -264,6 +278,7 @@
   }
 
   /* ---------- about ---------- */
+  #nosotros{padding-bottom:0;}
   .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;}
   .about p{color:var(--muted); margin-bottom:16px;}
   .about p strong{color:var(--ink); font-weight:600;}
@@ -383,6 +398,16 @@
     .team-grid{grid-template-columns:1fr;}
     .hero-grid{grid-template-columns:1fr; gap:36px;}
     .hero-seal{order:-1; max-width:200px; justify-self:start;}
+    .section-top{grid-template-columns:1fr; gap:0;}
+    .art-agave{width:150px;}
+    .section-top .section-head{margin-bottom:24px;}
+  }
+  /* En celular, 6 servicios a la vista y el resto detrás de un botón:
+     la página es larga y lo importante (paquetes y contacto) queda más cerca. */
+  @media (max-width:760px){
+    .cap-grid:not(.open) .cap:nth-child(n+7){display:none;}
+    .cap-more{display:flex; justify-content:center; margin-top:22px;}
+    .cap-grid.open + .cap-more{display:none;}
   }
   @media (max-width:760px){
     section{padding:72px 0;}
@@ -505,6 +530,7 @@
 <!-- ============ SERVICES ============ -->
 <section id="servicios">
   <div class="wrap">
+    <div class="section-top">
     <div class="section-head">
       <span class="eyebrow" data-en="What we do">Qué hacemos</span>
       <h2 data-en="Everything your business needs to exist online">Todo lo que tu negocio necesita para existir en línea</h2>
@@ -512,8 +538,10 @@
         Desde una sola página hasta una presencia digital completa. Elige solo lo que necesitas — te diremos con honestidad lo que no.
       </p>
     </div>
+    <img class="art art-agave" src="assets/img/arte-agave.webp" width="486" height="272" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    </div>
 
-    <div class="cap-grid">
+    <div class="cap-grid" id="capGrid">
       <article class="cap">
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
         <h3 data-en="One-page site">Sitio de una página</h3>
@@ -597,6 +625,9 @@
         <p data-en="Spanish and English in one site, like this one. Useful for tourism, exports and anyone selling beyond the state.">
           Español e inglés en un mismo sitio, como este. Útil para turismo, exportación y quien vende fuera del estado.</p>
       </article>
+    </div>
+    <div class="cap-more">
+      <button type="button" class="btn btn-ghost" id="capMore" aria-controls="capGrid" aria-expanded="false" data-en="See all 12 services">Ver los 12 servicios</button>
     </div>
   </div>
 </section>
@@ -774,6 +805,7 @@
         </div>
       </article>
     </div>
+    <img class="art art-horizon wide" src="assets/img/arte-sierra-salvia.webp" width="978" height="93" alt="" aria-hidden="true" loading="lazy" decoding="async">
   </div>
 </section>
 
@@ -825,6 +857,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="wrap">
+    <img class="art art-horizon" src="assets/img/arte-sierra-sol.webp" width="1000" height="169" alt="" aria-hidden="true" loading="lazy" decoding="async">
   </div>
 </section>
 
@@ -922,6 +957,7 @@
 <!-- ============ CTA ============ -->
 <section class="cta-band" id="contacto">
   <div class="wrap">
+    <img class="art art-contact" src="assets/img/arte-sol-linea.webp" width="651" height="156" alt="" aria-hidden="true" loading="lazy" decoding="async">
     <div class="cta-box">
       <div class="cta-seal" aria-hidden="true"></div>
       <span class="eyebrow" data-en="Let's talk">Platiquemos</span>
@@ -1186,6 +1222,15 @@
       burger.setAttribute("aria-expanded", "false");
     }
   });
+
+  /* ---------------- servicios en celular ---------------- */
+  var capMore = document.getElementById("capMore");
+  if (capMore) {
+    capMore.addEventListener("click", function () {
+      document.getElementById("capGrid").classList.add("open");
+      capMore.setAttribute("aria-expanded", "true");
+    });
+  }
 
   /* ---------------- misc ---------------- */
   document.getElementById("year").textContent = String(new Date().getFullYear());
